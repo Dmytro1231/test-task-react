@@ -1,27 +1,40 @@
 import React from "react";
 
-function FilteredUsers(props) {
+function FilteredUsers({
+  handleInputName,
+  handleInputSurname,
+  handleInputAge,
+  handleInputMale,
+}) {
   return (
-    <div>
-      <label>
+    <div className="filter">
+      <label for="name">
         Имя:
-        <input type="text" onChange={props.handleInput} />
+        <input type="text" onChange={handleInputName} />
       </label>
 
-      <label>
+      <label for="surname">
         Фамилия:
-        <input type="text" onChange={props.handleInput2} />
+        <input type="text" onChange={handleInputSurname} />
       </label>
 
-      <label>
+      <label for="age">
         Возраст:
-        <input type="text" onChange={props.handleInput3} />
+        <input type="text" onChange={handleInputAge} />
       </label>
 
-      <label>
+      <label className="checkbox">
         Пол:
-        <input type="checkbox" value="m" onChange={props.handleInput4} />
-        <input type="checkbox" value="f" onChange={props.handleInput5} />
+        <label>
+          {" "}
+          M &nbsp;
+          <input type="checkbox" value="m" onChange={handleInputMale} />
+        </label>
+        <label>
+          {" "}
+          F &nbsp;
+          <input type="checkbox" value="f" onChange={handleInputMale} />
+        </label>
       </label>
     </div>
   );

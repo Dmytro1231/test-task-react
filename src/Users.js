@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import "./User.css";
-
 function User({ name, lastname, age, sex }) {
   return (
     <div className="user">

@@ -3,6 +3,8 @@ import axios from "axios";
 import Users from "./Users";
 import FilteredUsers from "./FilteredUsers";
 
+import "./index.css";
+
 class App extends React.Component {
   state = {
     isLoading: true,
@@ -23,19 +25,19 @@ class App extends React.Component {
     this.getUsers();
   }
 
-  handleInput = (e) => {
+  handleInputName = (e) => {
     this.setState({ valueName: e.target.value });
   };
 
-  handleInput2 = (e) => {
+  handleInputSurname = (e) => {
     this.setState({ valueLastName: e.target.value });
   };
 
-  handleInput3 = (e) => {
+  handleInputAge = (e) => {
     this.setState({ age: e.target.value });
   };
 
-  handleInput4 = (e) => {
+  handleInputMale = (e) => {
     this.setState({ sex: e.target.value });
   };
 
@@ -55,10 +57,11 @@ class App extends React.Component {
         return user.age
           .toString()
           .toLowerCase()
-          .includes(this.state.age.toLowerCase());
-      } else if (this.state.sex === "m") {
+          .includes(this.state.age);
+      } else if (this.state.sex === "m" || this.state.sex === "f") {
         return user.sex.includes(this.state.sex);
-      } else return this.state.users;
+      }
+      return this.state.users;
     });
 
     return (
@@ -70,10 +73,10 @@ class App extends React.Component {
         ) : (
           <div>
             <FilteredUsers
-              handleInput={this.handleInput}
-              handleInput2={this.handleInput2}
-              handleInput3={this.handleInput3}
-              handleInput4={this.handleInput4}
+              handleInputName={this.handleInputName}
+              handleInputSurname={this.handleInputSurname}
+              handleInputAge={this.handleInputAge}
+              handleInputMale={this.handleInputMale}
             />
             <div className="users">
               {filteredUsers.map((user, index) => (
